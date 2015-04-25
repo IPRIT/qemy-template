@@ -143,9 +143,6 @@ abstract class AbstractView {
         foreach ($scripts as $key) {
             if (array_key_exists($key, $this->resources['static']['script'])) {
                 $version = isset($this->resources['static']['script'][$key]['version']) ? $this->resources['static']['script'][$key]['version'] : '';
-                if ($version) {
-                    $version = rand(1, 1e9);
-                }
                 echo str_replace(array('{0}'), array($this->resources['static']['script'][$key]['file'].($version ? '?'.$version : '')), $script_template);
             }
         }
@@ -167,9 +164,6 @@ abstract class AbstractView {
             foreach ($styles as $key) {
                 if (array_key_exists($key, $this->resources['static']['css'])) {
                     $version = isset($this->resources['static']['css'][$key]['version']) ? $this->resources['static']['css'][$key]['version'] : '';
-                    if ($version) {
-                        $version = rand(1, 1e9);
-                    }
                     echo str_replace(array('{0}'), array($this->resources['static']['css'][$key]['file'].($version ? '?'.$version : '')), $style_template);
                 }
             }
